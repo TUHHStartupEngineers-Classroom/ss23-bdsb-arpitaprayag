@@ -107,7 +107,7 @@ sales_by_states_tbl %>%
                                                     suffix = " €")) +
   labs(
     title = "Revenue by state",
-    subtitle = "Each state has an upward trend",
+    subtitle = "North Rhine-Westphalia has highest revenue",
     fill = "States" # Changes the legend name
   )
 ```
