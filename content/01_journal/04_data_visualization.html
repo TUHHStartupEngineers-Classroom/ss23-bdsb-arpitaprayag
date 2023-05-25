@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Joschka Schwarz">
+<meta name="author" content="Arpita Anand Prayag">
 
 <title>MyLabJournal - Data Visualization</title>
 <style>
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -43,6 +77,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,6 +99,9 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+
+<link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 </head>
@@ -131,7 +171,19 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#data-visualising-challenge" id="toc-data-visualising-challenge" class="nav-link active" data-scroll-target="#data-visualising-challenge"><span class="header-section-number">1</span> Data Visualising Challenge</a>
+  <ul class="collapse">
+  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code"><span class="header-section-number">1.1</span> Running Code</a></li>
+  <li><a href="#challenge-1---goal-map-the-time-course-of-the-cumulative-covid-19-cases" id="toc-challenge-1---goal-map-the-time-course-of-the-cumulative-covid-19-cases" class="nav-link" data-scroll-target="#challenge-1---goal-map-the-time-course-of-the-cumulative-covid-19-cases"><span class="header-section-number">1.2</span> Challenge 1 - Goal: Map the time course of the cumulative Covid-19 cases!</a></li>
+  <li><a href="#challenge-2" id="toc-challenge-2" class="nav-link" data-scroll-target="#challenge-2"><span class="header-section-number">1.3</span> Challenge 2</a></li>
+  <li><a href="#visualize-the-distribution-of-the-mortality-rate-deaths-population" id="toc-visualize-the-distribution-of-the-mortality-rate-deaths-population" class="nav-link" data-scroll-target="#visualize-the-distribution-of-the-mortality-rate-deaths-population"><span class="header-section-number">1.4</span> Visualize the distribution of the mortality rate (deaths / population)</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -148,7 +200,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Joschka Schwarz </p>
+             <p>Arpita Anand Prayag </p>
           </div>
   </div>
     
@@ -159,21 +211,199 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="data-visualising-challenge" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Data Visualising Challenge</h1>
+<section id="running-code" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="running-code"><span class="header-section-number">1.1</span> Running Code</h2>
+<section id="load-libraries" class="level3">
+<h3 class="anchored" data-anchor-id="load-libraries">Load libraries</h3>
+<div class="cell" data-hash="04_data_visualization_cache/html/unnamed-chunk-1_dd67dc4afca6888bd98f0f746b616096">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Lollipop Chart: Top N Customers ----</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4
+#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.0
+#&gt; ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+#&gt; ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+#&gt; ✔ purrr     1.0.1     
+#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#&gt; ✖ dplyr::filter() masks stats::filter()
+#&gt; ✖ dplyr::lag()    masks stats::lag()
+#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="callout-title-container flex-fill">
-Note
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="fu">library</span>(scales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; 
+#&gt; Attaching package: 'scales'
+#&gt; 
+#&gt; The following object is masked from 'package:purrr':
+#&gt; 
+#&gt;     discard
+#&gt; 
+#&gt; The following object is masked from 'package:readr':
+#&gt; 
+#&gt;     col_factor</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(maps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; 
+#&gt; Attaching package: 'maps'
+#&gt; 
+#&gt; The following object is masked from 'package:purrr':
+#&gt; 
+#&gt;     map</code></pre>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>You can delete everything in here and start fresh.</p>
+</section>
+</section>
+<section id="challenge-1---goal-map-the-time-course-of-the-cumulative-covid-19-cases" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="challenge-1---goal-map-the-time-course-of-the-cumulative-covid-19-cases"><span class="header-section-number">1.2</span> Challenge 1 - Goal: Map the time course of the cumulative Covid-19 cases!</h2>
+<div class="cell" data-hash="04_data_visualization_cache/html/unnamed-chunk-2_4b5b79825ac6cd1427a631a8753fdfc6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>covid_data_tbl <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://covid.ourworldindata.org/data/owid-covid-data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Rows: 313070 Columns: 67
+#&gt; ── Column specification ────────────────────────────────────────────────────────
+#&gt; Delimiter: ","
+#&gt; chr   (4): iso_code, continent, location, tests_units
+#&gt; dbl  (62): total_cases, new_cases, new_cases_smoothed, total_deaths, new_dea...
+#&gt; date  (1): date
+#&gt; 
+#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.
+#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<section id="filter-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="filter-the-data">Filter the data</h3>
+<div class="cell" data-hash="04_data_visualization_cache/html/unnamed-chunk-3_d23470a56687029cecf5ae73a66764d4">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>selected_countries <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Spain"</span>, <span class="st">"United States"</span>, <span class="st">"United Kingdom"</span>, <span class="st">"France"</span>, <span class="st">"Germany"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a>filtered_data <span class="ot">&lt;-</span> covid_data_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">filter</span>(location <span class="sc">%in%</span> selected_countries) <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">as.Date</span>(date))</span>
+<span id="cb9-6"><a href="#cb9-6"></a></span>
+<span id="cb9-7"><a href="#cb9-7"></a></span>
+<span id="cb9-8"><a href="#cb9-8"></a>cumulative_cases <span class="ot">&lt;-</span> filtered_data <span class="sc">%&gt;%</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>  <span class="fu">group_by</span>(location) <span class="sc">%&gt;%</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>  <span class="fu">mutate</span>(<span class="at">cumulative_cases_millions =</span> total_cases <span class="sc">/</span> <span class="fl">1e6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-the-line-plot-with-the-cumulative-cases-over-time" class="level3">
+<h3 class="anchored" data-anchor-id="create-the-line-plot-with-the-cumulative-cases-over-time">Create the line plot with the cumulative cases over time</h3>
+<div class="cell" data-hash="04_data_visualization_cache/html/unnamed-chunk-4_794d6b193e8b64d758348c9d6fd86fa4">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">ggplot</span>(cumulative_cases, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> cumulative_cases_millions, <span class="at">color =</span> location)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%b %Y"</span>, <span class="at">date_breaks =</span> <span class="st">"1 month"</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"COVID-19 cases worldwide"</span>,</span>
+<span id="cb10-6"><a href="#cb10-6"></a>       <span class="at">x =</span> <span class="st">"Month and Year"</span>,</span>
+<span id="cb10-7"><a href="#cb10-7"></a>       <span class="at">y =</span> <span class="st">"Cumulative Cases (Millions)"</span>) <span class="sc">+</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb10-10"><a href="#cb10-10"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>,</span>
+<span id="cb10-11"><a href="#cb10-11"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb10-12"><a href="#cb10-12"></a>  <span class="fu">geom_label_repel</span>(<span class="at">data =</span> <span class="fu">filter</span>(cumulative_cases, date <span class="sc">==</span> <span class="fu">max</span>(date)),</span>
+<span id="cb10-13"><a href="#cb10-13"></a>                   <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste</span>(location, scales<span class="sc">::</span><span class="fu">comma</span>(cumulative_cases_millions), <span class="at">sep =</span> <span class="st">" - "</span>)),</span>
+<span id="cb10-14"><a href="#cb10-14"></a>                   <span class="at">nudge_x =</span> <span class="dv">10</span>,</span>
+<span id="cb10-15"><a href="#cb10-15"></a>                   <span class="at">direction =</span> <span class="st">"y"</span>,</span>
+<span id="cb10-16"><a href="#cb10-16"></a>                   <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb10-17"><a href="#cb10-17"></a>                   <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb10-18"><a href="#cb10-18"></a>                   <span class="at">box.padding =</span> <span class="fl">0.5</span>,</span>
+<span id="cb10-19"><a href="#cb10-19"></a>                   <span class="at">box.margin =</span> <span class="fl">0.5</span>,</span>
+<span id="cb10-20"><a href="#cb10-20"></a>                   <span class="at">segment.color =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+#&gt; ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Warning in geom_label_repel(data = filter(cumulative_cases, date == max(date)),
+#&gt; : Ignoring unknown parameters: `box.margin`</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Warning: Removed 76 rows containing missing values (`geom_line()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="04_data_visualization_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="challenge-2" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="challenge-2"><span class="header-section-number">1.3</span> Challenge 2</h2>
+</section>
+<section id="visualize-the-distribution-of-the-mortality-rate-deaths-population" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="visualize-the-distribution-of-the-mortality-rate-deaths-population"><span class="header-section-number">1.4</span> Visualize the distribution of the mortality rate (deaths / population)</h2>
+<section id="read-the-data-and-adjust-country-names" class="level3">
+<h3 class="anchored" data-anchor-id="read-the-data-and-adjust-country-names">Read the data and adjust country names</h3>
+<div class="cell" data-hash="04_data_visualization_cache/html/unnamed-chunk-5_86118bc0308c33d5101ce4297928cbee">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>world <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">"world"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2"></a>covid_data_tbl <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://covid.ourworldindata.org/data/owid-covid-data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Rows: 313070 Columns: 67
+#&gt; ── Column specification ────────────────────────────────────────────────────────
+#&gt; Delimiter: ","
+#&gt; chr   (4): iso_code, continent, location, tests_units
+#&gt; dbl  (62): total_cases, new_cases, new_cases_smoothed, total_deaths, new_dea...
+#&gt; date  (1): date
+#&gt; 
+#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.
+#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>adjusted_data <span class="ot">&lt;-</span> covid_data_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">mutate</span>(<span class="at">location =</span> <span class="fu">case_when</span>(</span>
+<span id="cb16-3"><a href="#cb16-3"></a>    location <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">~</span> <span class="st">"UK"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4"></a>    location <span class="sc">==</span> <span class="st">"United States"</span> <span class="sc">~</span> <span class="st">"USA"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5"></a>    location <span class="sc">==</span> <span class="st">"Democratic Republic of Congo"</span> <span class="sc">~</span> <span class="st">"Democratic Republic of the Congo"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> location</span>
+<span id="cb16-7"><a href="#cb16-7"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a>  <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="group-the-adjusted-data-by-location-and-keep-the-latest-entry-for-each-location" class="level3">
+<h3 class="anchored" data-anchor-id="group-the-adjusted-data-by-location-and-keep-the-latest-entry-for-each-location">Group the adjusted data by location and keep the latest entry for each location</h3>
+<div class="cell" data-hash="04_data_visualization_cache/html/unnamed-chunk-6_3ea8e4be37d10827a2bdd27a73d3c447">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>adjusted_data_latest <span class="ot">&lt;-</span> adjusted_data <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">group_by</span>(location) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">slice_max</span>(date, <span class="at">n =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="join-the-latitudelongitude-data-with-the-covid-19-data" class="level3">
+<h3 class="anchored" data-anchor-id="join-the-latitudelongitude-data-with-the-covid-19-data">Join the latitude/longitude data with the COVID-19 data</h3>
+<div class="cell" data-hash="04_data_visualization_cache/html/unnamed-chunk-7_16e564931be32ad58748b9b3ea0b5f7d">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>plot_data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(world, adjusted_data_latest, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"region"</span> <span class="ot">=</span> <span class="st">"location"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="visualize-the-distribution-of-the-mortality-rate-or-case-fatality-rate" class="level3">
+<h3 class="anchored" data-anchor-id="visualize-the-distribution-of-the-mortality-rate-or-case-fatality-rate">Visualize the distribution of the mortality rate or case-fatality rate</h3>
+<div class="cell" data-hash="04_data_visualization_cache/html/unnamed-chunk-8_6860bfe59a999628cb7a6e5109da3afa">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">geom_polygon</span>(<span class="at">data =</span> plot_data, <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat, <span class="at">group =</span> group, <span class="at">fill =</span> total_deaths <span class="sc">/</span> population), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"red"</span>, <span class="at">high =</span> <span class="st">"black"</span>, <span class="at">na.value =</span> <span class="st">"gray"</span>, <span class="at">guide =</span> <span class="st">"legend"</span>) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">"Mortality Rate"</span>) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribution of Mortality Rate"</span>) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="04_data_visualization_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
 </div>
 </div>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -525,6 +755,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":true,"descPosition":"bottom","openEffect":"zoom"});</script>
 
 
 
