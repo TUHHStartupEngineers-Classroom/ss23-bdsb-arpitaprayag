@@ -174,9 +174,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#acquisition-challenges" id="toc-acquisition-challenges" class="nav-link active" data-scroll-target="#acquisition-challenges"><span class="header-section-number">1</span> Acquisition Challenges</a>
   <ul class="collapse">
-  <li><a href="#get-some-data-via-an-api.-there-are-millions-of-providers-that-offer-api-access-for-free-and-have-good-documentation-about-how-to-query-their-service." id="toc-get-some-data-via-an-api.-there-are-millions-of-providers-that-offer-api-access-for-free-and-have-good-documentation-about-how-to-query-their-service." class="nav-link" data-scroll-target="#get-some-data-via-an-api.-there-are-millions-of-providers-that-offer-api-access-for-free-and-have-good-documentation-about-how-to-query-their-service."><span class="header-section-number">1.1</span> 1) Get some data via an API. There are millions of providers, that offer API access for free and have good documentation about how to query their service.</a></li>
+  <li><a href="#get-some-data-via-an-api.-there-are-millions-of-providers-that-offer-api-access-for-free-and-have-good-documentation-about-how-to-query-their-service." id="toc-get-some-data-via-an-api.-there-are-millions-of-providers-that-offer-api-access-for-free-and-have-good-documentation-about-how-to-query-their-service." class="nav-link" data-scroll-target="#get-some-data-via-an-api.-there-are-millions-of-providers-that-offer-api-access-for-free-and-have-good-documentation-about-how-to-query-their-service."><span class="header-section-number">1.1</span> Get some data via an API. There are millions of providers, that offer API access for free and have good documentation about how to query their service.</a></li>
   <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code"><span class="header-section-number">1.2</span> Running Code</a></li>
-  <li><a href="#scrape-one-of-the-competitor-websites-of-canyon" id="toc-scrape-one-of-the-competitor-websites-of-canyon" class="nav-link" data-scroll-target="#scrape-one-of-the-competitor-websites-of-canyon"><span class="header-section-number">1.3</span> 2) Scrape one of the competitor websites of canyon</a></li>
+  <li><a href="#scrape-one-of-the-competitor-websites-of-canyon" id="toc-scrape-one-of-the-competitor-websites-of-canyon" class="nav-link" data-scroll-target="#scrape-one-of-the-competitor-websites-of-canyon"><span class="header-section-number">1.3</span> Scrape one of the competitor websites of canyon</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -210,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="acquisition-challenges" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Acquisition Challenges</h1>
 <section id="get-some-data-via-an-api.-there-are-millions-of-providers-that-offer-api-access-for-free-and-have-good-documentation-about-how-to-query-their-service." class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="get-some-data-via-an-api.-there-are-millions-of-providers-that-offer-api-access-for-free-and-have-good-documentation-about-how-to-query-their-service."><span class="header-section-number">1.1</span> 1) Get some data via an API. There are millions of providers, that offer API access for free and have good documentation about how to query their service.</h2>
+<h2 data-number="1.1" class="anchored" data-anchor-id="get-some-data-via-an-api.-there-are-millions-of-providers-that-offer-api-access-for-free-and-have-good-documentation-about-how-to-query-their-service."><span class="header-section-number">1.1</span> Get some data via an API. There are millions of providers, that offer API access for free and have good documentation about how to query their service.</h2>
 </section>
 <section id="running-code" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="running-code"><span class="header-section-number">1.2</span> Running Code</h2>
@@ -249,7 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="check-the-status-code" class="level3">
 <h3 class="anchored" data-anchor-id="check-the-status-code">Check the status code</h3>
-<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-3_4dceeba34703ff5a8b076a53d942753a">
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-3_cd014ec64dbb74e94556e532f1feb95b">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="cf">if</span> (response<span class="sc">$</span>status_code <span class="sc">==</span> <span class="dv">200</span>) {</span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="co"># The request was successful</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="co"># Get the response data</span></span>
@@ -259,111 +259,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-7"><a href="#cb7-7"></a>    <span class="fu">rawToChar</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb7-8"><a href="#cb7-8"></a>    <span class="fu">fromJSON</span>()</span>
 <span id="cb7-9"><a href="#cb7-9"></a>  </span>
-<span id="cb7-10"><a href="#cb7-10"></a>  meals_db</span>
+<span id="cb7-10"><a href="#cb7-10"></a>  <span class="fu">as.data.frame</span>(meals_db)</span>
 <span id="cb7-11"><a href="#cb7-11"></a>} <span class="cf">else</span> {</span>
 <span id="cb7-12"><a href="#cb7-12"></a>  <span class="co"># The request failed</span></span>
 <span id="cb7-13"><a href="#cb7-13"></a>  <span class="fu">print</span>(response<span class="sc">$</span>status_code)</span>
 <span id="cb7-14"><a href="#cb7-14"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>#&gt; $meals
-#&gt;                                       strMeal
-#&gt; 1         Baked salmon with fennel &amp; tomatoes
-#&gt; 2                     Cajun spiced fish tacos
-#&gt; 3                              Escovitch Fish
-#&gt; 4                                  Fish fofos
-#&gt; 5                                    Fish pie
-#&gt; 6                      Fish Stew with Rouille
-#&gt; 7                            Garides Saganaki
-#&gt; 8                 Grilled Portuguese sardines
-#&gt; 9                       Honey Teriyaki Salmon
-#&gt; 10                                   Kedgeree
-#&gt; 11                             Kung Po Prawns
-#&gt; 12                   Laksa King Prawn Noodles
-#&gt; 13                  Mediterranean Pasta Salad
-#&gt; 14                           Mee goreng mamak
-#&gt; 15                                 Nasi lemak
-#&gt; 16 Portuguese fish stew (Caldeirada de peixe)
-#&gt; 17                       Recheado Masala Fish
-#&gt; 18                       Salmon Avocado Salad
-#&gt; 19                       Salmon Prawn Risotto
-#&gt; 20                         Saltfish and Ackee
-#&gt; 21                             Seafood fideuà
-#&gt; 22                            Shrimp Chow Fun
-#&gt; 23            Sledz w Oleju (Polish Herrings)
-#&gt; 24           Spring onion and prawn empanadas
-#&gt; 25                                      Sushi
-#&gt; 26                             Three Fish Pie
-#&gt; 27                         Tuna and Egg Briks
-#&gt; 28                               Tuna Nicoise
-#&gt;                                                         strMealThumb idMeal
-#&gt; 1        https://www.themealdb.com/images/media/meals/1548772327.jpg  52959
-#&gt; 2  https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg  52819
-#&gt; 3        https://www.themealdb.com/images/media/meals/1520084413.jpg  52944
-#&gt; 4  https://www.themealdb.com/images/media/meals/a15wsa1614349126.jpg  53043
-#&gt; 5  https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg  52802
-#&gt; 6  https://www.themealdb.com/images/media/meals/vptqpw1511798500.jpg  52918
-#&gt; 7  https://www.themealdb.com/images/media/meals/wuvryu1468232995.jpg  52764
-#&gt; 8  https://www.themealdb.com/images/media/meals/lpd4wy1614347943.jpg  53041
-#&gt; 9  https://www.themealdb.com/images/media/meals/xxyupu1468262513.jpg  52773
-#&gt; 10 https://www.themealdb.com/images/media/meals/utxqpt1511639216.jpg  52887
-#&gt; 11       https://www.themealdb.com/images/media/meals/1525873040.jpg  52946
-#&gt; 12 https://www.themealdb.com/images/media/meals/rvypwy1503069308.jpg  52821
-#&gt; 13 https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg  52777
-#&gt; 14 https://www.themealdb.com/images/media/meals/xquakq1619787532.jpg  53048
-#&gt; 15 https://www.themealdb.com/images/media/meals/wai9bw1619788844.jpg  53051
-#&gt; 16 https://www.themealdb.com/images/media/meals/do7zps1614349775.jpg  53045
-#&gt; 17 https://www.themealdb.com/images/media/meals/uwxusv1487344500.jpg  52809
-#&gt; 18       https://www.themealdb.com/images/media/meals/1549542994.jpg  52960
-#&gt; 19 https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg  52823
-#&gt; 20 https://www.themealdb.com/images/media/meals/vytypy1511883765.jpg  52936
-#&gt; 21 https://www.themealdb.com/images/media/meals/wqqvyq1511179730.jpg  52836
-#&gt; 22       https://www.themealdb.com/images/media/meals/1529445434.jpg  52953
-#&gt; 23 https://www.themealdb.com/images/media/meals/7ttta31593350374.jpg  53023
-#&gt; 24 https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg  53040
-#&gt; 25 https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg  53065
-#&gt; 26 https://www.themealdb.com/images/media/meals/spswqs1511558697.jpg  52882
-#&gt; 27 https://www.themealdb.com/images/media/meals/2dsltq1560461468.jpg  52975
-#&gt; 28 https://www.themealdb.com/images/media/meals/yypwwq1511304979.jpg  52852</code></pre>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["meals.strMeal"],"name":[1],"type":["chr"],"align":["left"]},{"label":["meals.strMealThumb"],"name":[2],"type":["chr"],"align":["left"]},{"label":["meals.idMeal"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"Baked salmon with fennel & tomatoes","2":"https://www.themealdb.com/images/media/meals/1548772327.jpg","3":"52959","_rn_":"1"},{"1":"Cajun spiced fish tacos","2":"https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg","3":"52819","_rn_":"2"},{"1":"Escovitch Fish","2":"https://www.themealdb.com/images/media/meals/1520084413.jpg","3":"52944","_rn_":"3"},{"1":"Fish fofos","2":"https://www.themealdb.com/images/media/meals/a15wsa1614349126.jpg","3":"53043","_rn_":"4"},{"1":"Fish pie","2":"https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg","3":"52802","_rn_":"5"},{"1":"Fish Stew with Rouille","2":"https://www.themealdb.com/images/media/meals/vptqpw1511798500.jpg","3":"52918","_rn_":"6"},{"1":"Garides Saganaki","2":"https://www.themealdb.com/images/media/meals/wuvryu1468232995.jpg","3":"52764","_rn_":"7"},{"1":"Grilled Portuguese sardines","2":"https://www.themealdb.com/images/media/meals/lpd4wy1614347943.jpg","3":"53041","_rn_":"8"},{"1":"Honey Teriyaki Salmon","2":"https://www.themealdb.com/images/media/meals/xxyupu1468262513.jpg","3":"52773","_rn_":"9"},{"1":"Kedgeree","2":"https://www.themealdb.com/images/media/meals/utxqpt1511639216.jpg","3":"52887","_rn_":"10"},{"1":"Kung Po Prawns","2":"https://www.themealdb.com/images/media/meals/1525873040.jpg","3":"52946","_rn_":"11"},{"1":"Laksa King Prawn Noodles","2":"https://www.themealdb.com/images/media/meals/rvypwy1503069308.jpg","3":"52821","_rn_":"12"},{"1":"Mediterranean Pasta Salad","2":"https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg","3":"52777","_rn_":"13"},{"1":"Mee goreng mamak","2":"https://www.themealdb.com/images/media/meals/xquakq1619787532.jpg","3":"53048","_rn_":"14"},{"1":"Nasi lemak","2":"https://www.themealdb.com/images/media/meals/wai9bw1619788844.jpg","3":"53051","_rn_":"15"},{"1":"Portuguese fish stew (Caldeirada de peixe)","2":"https://www.themealdb.com/images/media/meals/do7zps1614349775.jpg","3":"53045","_rn_":"16"},{"1":"Recheado Masala Fish","2":"https://www.themealdb.com/images/media/meals/uwxusv1487344500.jpg","3":"52809","_rn_":"17"},{"1":"Salmon Avocado Salad","2":"https://www.themealdb.com/images/media/meals/1549542994.jpg","3":"52960","_rn_":"18"},{"1":"Salmon Prawn Risotto","2":"https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg","3":"52823","_rn_":"19"},{"1":"Saltfish and Ackee","2":"https://www.themealdb.com/images/media/meals/vytypy1511883765.jpg","3":"52936","_rn_":"20"},{"1":"Seafood fideuà","2":"https://www.themealdb.com/images/media/meals/wqqvyq1511179730.jpg","3":"52836","_rn_":"21"},{"1":"Shrimp Chow Fun","2":"https://www.themealdb.com/images/media/meals/1529445434.jpg","3":"52953","_rn_":"22"},{"1":"Sledz w Oleju (Polish Herrings)","2":"https://www.themealdb.com/images/media/meals/7ttta31593350374.jpg","3":"53023","_rn_":"23"},{"1":"Spring onion and prawn empanadas","2":"https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg","3":"53040","_rn_":"24"},{"1":"Sushi","2":"https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg","3":"53065","_rn_":"25"},{"1":"Three Fish Pie","2":"https://www.themealdb.com/images/media/meals/spswqs1511558697.jpg","3":"52882","_rn_":"26"},{"1":"Tuna and Egg Briks","2":"https://www.themealdb.com/images/media/meals/2dsltq1560461468.jpg","3":"52975","_rn_":"27"},{"1":"Tuna Nicoise","2":"https://www.themealdb.com/images/media/meals/yypwwq1511304979.jpg","3":"52852","_rn_":"28"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 </div>
 </div>
 </section>
 </section>
 <section id="scrape-one-of-the-competitor-websites-of-canyon" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="scrape-one-of-the-competitor-websites-of-canyon"><span class="header-section-number">1.3</span> 2) Scrape one of the competitor websites of canyon</h2>
+<h2 data-number="1.3" class="anchored" data-anchor-id="scrape-one-of-the-competitor-websites-of-canyon"><span class="header-section-number">1.3</span> Scrape one of the competitor websites of canyon</h2>
 <section id="set-the-url-of-the-website-to-scrape" class="level3">
 <h3 class="anchored" data-anchor-id="set-the-url-of-the-website-to-scrape">Set the URL of the website to scrape</h3>
 <div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-4_895795d2cd1208db5709387077b57581">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://www.rosebikes.de/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://www.rosebikes.de/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="scrape-the-website" class="level3">
 <h3 class="anchored" data-anchor-id="scrape-the-website">Scrape the website</h3>
 <div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-5_7fc226ed885c24565cda2f551ad8a2ee">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>html <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
-<span id="cb10-2"><a href="#cb10-2"></a></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="co"># Find the elements that contain the model names</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a>model_names <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">html_nodes</span>(<span class="st">".products-slider-tile__product-name"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a>  <span class="fu">html_text</span>()</span>
-<span id="cb10-7"><a href="#cb10-7"></a></span>
-<span id="cb10-8"><a href="#cb10-8"></a><span class="co"># Find the elements that contain the prices</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a>prices <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span></span>
-<span id="cb10-10"><a href="#cb10-10"></a>  <span class="fu">html_nodes</span>(<span class="st">".product-tile-price__current-value"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-11"><a href="#cb10-11"></a>  <span class="fu">html_text</span>()</span>
-<span id="cb10-12"><a href="#cb10-12"></a></span>
-<span id="cb10-13"><a href="#cb10-13"></a><span class="co"># Extract the number using regular expressions</span></span>
-<span id="cb10-14"><a href="#cb10-14"></a>price <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"[^0-9.,]"</span>, <span class="st">""</span>, prices)  <span class="co"># Remove all non-digit, non-decimal, and non-comma characters</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>html <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url)</span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co"># Find the elements that contain the model names</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>model_names <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>  <span class="fu">html_nodes</span>(<span class="st">".products-slider-tile__product-name"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb9-7"><a href="#cb9-7"></a></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="co"># Find the elements that contain the prices</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>prices <span class="ot">&lt;-</span> html <span class="sc">%&gt;%</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>  <span class="fu">html_nodes</span>(<span class="st">".product-tile-price__current-value"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb9-12"><a href="#cb9-12"></a></span>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="co"># Extract the number using regular expressions</span></span>
+<span id="cb9-14"><a href="#cb9-14"></a>price <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"[^0-9.,]"</span>, <span class="st">""</span>, prices)  <span class="co"># Remove all non-digit, non-decimal, and non-comma characters</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="create-a-data-frame-of-the-model-names-and-prices" class="level3">
 <h3 class="anchored" data-anchor-id="create-a-data-frame-of-the-model-names-and-prices">Create a data frame of the model names and prices</h3>
 <div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-6_d8fe42f516e1feaff7d7a000a1383b86">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>database <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb11-2"><a href="#cb11-2"></a>  <span class="at">Model =</span> model_names,</span>
-<span id="cb11-3"><a href="#cb11-3"></a>  <span class="at">Price =</span> price</span>
-<span id="cb11-4"><a href="#cb11-4"></a>)</span>
-<span id="cb11-5"><a href="#cb11-5"></a></span>
-<span id="cb11-6"><a href="#cb11-6"></a>database</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>database <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="at">Model =</span> model_names,</span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="at">Price =</span> price</span>
+<span id="cb10-4"><a href="#cb10-4"></a>)</span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a>database</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">

@@ -7,7 +7,7 @@ editor: visual
 
 # Acquisition Challenges
 
-## 1) Get some data via an API. There are millions of providers, that offer API access for free and have good documentation about how to query their service.
+## Get some data via an API. There are millions of providers, that offer API access for free and have good documentation about how to query their service.
 
 ## Running Code
 
@@ -42,14 +42,14 @@ if (response$status_code == 200) {
     rawToChar() %>%
     fromJSON()
   
-  meals_db
+  as.data.frame(meals_db)
 } else {
   # The request failed
   print(response$status_code)
 }
 ```
 
-## 2) Scrape one of the competitor websites of canyon
+## Scrape one of the competitor websites of canyon
 
 ### Set the URL of the website to scrape
 
