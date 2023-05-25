@@ -172,15 +172,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-  <li><a href="#wrangling-challenges-using-alternative-2" id="toc-wrangling-challenges-using-alternative-2" class="nav-link active" data-scroll-target="#wrangling-challenges-using-alternative-2"><span class="header-section-number">1</span> Wrangling Challenges Using Alternative 2</a>
+  <li><a href="#data-wrangling-challenges-using-alternative-2" id="toc-data-wrangling-challenges-using-alternative-2" class="nav-link active" data-scroll-target="#data-wrangling-challenges-using-alternative-2"><span class="header-section-number">1</span> Data Wrangling Challenges Using Alternative 2</a>
   <ul class="collapse">
   <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code"><span class="header-section-number">1.1</span> Running Code</a></li>
+  <li><a href="#using-alternative-2-the-reduced-data-set-for-the-year-2014" id="toc-using-alternative-2-the-reduced-data-set-for-the-year-2014" class="nav-link" data-scroll-target="#using-alternative-2-the-reduced-data-set-for-the-year-2014"><span class="header-section-number">1.2</span> Using Alternative 2: The reduced data set for the year 2014</a></li>
   </ul></li>
-  <li><a href="#define-column-types-for-vroom" id="toc-define-column-types-for-vroom" class="nav-link" data-scroll-target="#define-column-types-for-vroom"><span class="header-section-number">2</span> Define column types for vroom</a></li>
-  <li><a href="#using-alternative-2-the-reduced-data-set-for-the-year-2014" id="toc-using-alternative-2-the-reduced-data-set-for-the-year-2014" class="nav-link" data-scroll-target="#using-alternative-2-the-reduced-data-set-for-the-year-2014"><span class="header-section-number">3</span> – Using Alternative 2: The reduced data set for the year 2014</a></li>
-  <li><a href="#read-the-data-into-a-tibble" id="toc-read-the-data-into-a-tibble" class="nav-link" data-scroll-target="#read-the-data-into-a-tibble"><span class="header-section-number">4</span> Read the data into a tibble</a></li>
-  <li><a href="#join-tables" id="toc-join-tables" class="nav-link" data-scroll-target="#join-tables"><span class="header-section-number">5</span> Join Tables</a></li>
-  <li><a href="#patent-dominance-what-us-companycorporation-has-the-most-patents" id="toc-patent-dominance-what-us-companycorporation-has-the-most-patents" class="nav-link" data-scroll-target="#patent-dominance-what-us-companycorporation-has-the-most-patents"><span class="header-section-number">6</span> Patent Dominance: What US company/corporation has the most patents?</a></li>
   </ul>
 </nav>
     </div>
@@ -210,9 +206,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="wrangling-challenges-using-alternative-2" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Wrangling Challenges Using Alternative 2</h1>
-<p>##Patent Dominance: What US company / corporation has the most patents? List the 10 US companies with the most assigned/granted patents..</p>
+<section id="data-wrangling-challenges-using-alternative-2" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Data Wrangling Challenges Using Alternative 2</h1>
+<p>Patent Dominance: What US company / corporation has the most patents? List the 10 US companies with the most assigned/granted patents..</p>
 <section id="running-code" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="running-code"><span class="header-section-number">1.1</span> Running Code</h2>
 <section id="load-libraries" class="level3">
@@ -275,14 +271,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>##Data Import</p>
 </section>
-<section id="data-import" class="level3">
-<h3 class="anchored" data-anchor-id="data-import">DATA IMPORT</h3>
-</section>
-</section>
-</section>
-<section id="define-column-types-for-vroom" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Define column types for vroom</h1>
+<section id="define-column-types-for-vroom" class="level3">
+<h3 class="anchored" data-anchor-id="define-column-types-for-vroom">Define column types for vroom</h3>
 <div class="cell" data-hash="03_data_wrangling_cache/html/unnamed-chunk-2_c61debee7cda3b07619269e3168adcf4">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>col_types <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
 <span id="cb10-2"><a href="#cb10-2"></a>  <span class="at">id =</span> <span class="fu">col_character</span>(),</span>
@@ -299,11 +291,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-13"><a href="#cb10-13"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="using-alternative-2-the-reduced-data-set-for-the-year-2014" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> – Using Alternative 2: The reduced data set for the year 2014</h1>
 </section>
-<section id="read-the-data-into-a-tibble" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Read the data into a tibble</h1>
+<section id="using-alternative-2-the-reduced-data-set-for-the-year-2014" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="using-alternative-2-the-reduced-data-set-for-the-year-2014"><span class="header-section-number">1.2</span> Using Alternative 2: The reduced data set for the year 2014</h2>
+<section id="read-the-data-into-a-tibble" class="level3">
+<h3 class="anchored" data-anchor-id="read-the-data-into-a-tibble">Read the data into a tibble</h3>
 <div class="cell" data-hash="03_data_wrangling_cache/html/unnamed-chunk-3_9f7908d308484cb5ff096db1ceb361e7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>patent_tbl <span class="ot">&lt;-</span> <span class="fu">vroom</span>(</span>
 <span id="cb11-2"><a href="#cb11-2"></a>  <span class="at">file =</span> <span class="st">"C:/Users/arpit/OneDrive/Documents/GitHub/repo/ss23-bdsb-arpitaprayag/assets/data/Patent_data_reduced/Patent_data_reduced/patent.tsv"</span>, </span>
@@ -354,17 +346,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="join-tables" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Join Tables</h1>
+<section id="join-tables" class="level3">
+<h3 class="anchored" data-anchor-id="join-tables">Join Tables</h3>
 <div class="cell" data-hash="03_data_wrangling_cache/html/unnamed-chunk-4_6b2a28f9ee6d30bd5e81d4254d7c069e">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>patent_joined_table <span class="ot">&lt;-</span> patent_assignee_tbl <span class="sc">%&gt;%</span></span>
 <span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">inner_join</span>(assignee_tbl, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"assignee_id"</span> <span class="ot">=</span> <span class="st">"id"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">inner_join</span>(patent_tbl, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"patent_id"</span> <span class="ot">=</span> <span class="st">"id"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="patent-dominance-what-us-companycorporation-has-the-most-patents" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Patent Dominance: What US company/corporation has the most patents?</h1>
-<p>##List the 10 US companies with the most assigned/granted patents.</p>
+<p>###Patent Dominance: What US company/corporation has the most patents.List the 10 US companies with the most assigned/granted patents.</p>
 <div class="cell" data-hash="03_data_wrangling_cache/html/unnamed-chunk-5_a11d57e4e504893d32c294dcad101491">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>us_patent_counts <span class="ot">&lt;-</span> patent_joined_table <span class="sc">%&gt;%</span></span>
 <span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">group_by</span>(organization) <span class="sc">%&gt;%</span></span>
@@ -383,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>#What US organization had the most patents granted in August 2014? List the top 10 companies with the most new granted patents for August 2014.</p>
+<p>###What US organization had the most patents granted in August 2014? List the top 10 companies with the most new granted patents for August 2014.</p>
 <div class="cell" data-hash="03_data_wrangling_cache/html/unnamed-chunk-6_c1109e7e65a4855022f1bdbaf18f673c">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>us_patent_counts_aug_2014 <span class="ot">&lt;-</span> patent_joined_table <span class="sc">%&gt;%</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">filter</span>(<span class="fu">format</span>(date, <span class="st">"%Y-%m"</span>) <span class="sc">==</span> <span class="st">"2014-08"</span>) <span class="sc">%&gt;%</span></span>
@@ -406,6 +395,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -1,13 +1,14 @@
 ---
 title: "Data Wrangling"
 author: "Arpita Anand Prayag"
+Matriculation number: "564621"
 format: html
 editor: visual
 ---
 
-# Wrangling Challenges Using Alternative 2
+# Data Wrangling Challenges Using Alternative 2
 
-##Patent Dominance: What US company / corporation has the most patents? List the 10 US companies with the most assigned/granted patents..
+Patent Dominance: What US company / corporation has the most patents? List the 10 US companies with the most assigned/granted patents..
 
 ## Running Code
 
@@ -22,9 +23,9 @@ library(dplyr)
 library(readxl)
 ```
 
-### DATA IMPORT
+##Data Import
 
-# Define column types for vroom
+### Define column types for vroom
 
 ```{r}
 col_types <- list(
@@ -42,9 +43,9 @@ col_types <- list(
 )
 ```
 
-# -- Using Alternative 2: The reduced data set for the year 2014
+## Using Alternative 2: The reduced data set for the year 2014
 
-# Read the data into a tibble
+### Read the data into a tibble
 
 ```{r}
 patent_tbl <- vroom(
@@ -76,7 +77,7 @@ uspc_tbl <- vroom(
 )
 ```
 
-# Join Tables
+### Join Tables
 
 ```{r}
 patent_joined_table <- patent_assignee_tbl %>%
@@ -84,9 +85,7 @@ patent_joined_table <- patent_assignee_tbl %>%
   inner_join(patent_tbl, by = c("patent_id" = "id"))
 ```
 
-# Patent Dominance: What US company/corporation has the most patents?
-
-##List the 10 US companies with the most assigned/granted patents.
+###Patent Dominance: What US company/corporation has the most patents.List the 10 US companies with the most assigned/granted patents.
 
 ```{r}
 us_patent_counts <- patent_joined_table %>%
@@ -99,7 +98,7 @@ top_10_us_companies <- head(us_patent_counts, 10)
 top_10_us_companies
 ```
 
-#What US organization had the most patents granted in August 2014? List the top 10 companies with the most new granted patents for August 2014.
+###What US organization had the most patents granted in August 2014? List the top 10 companies with the most new granted patents for August 2014.
 
 ```{r}
 us_patent_counts_aug_2014 <- patent_joined_table %>%
