@@ -1,8 +1,90 @@
 ---
-title: "Data Acquisition"
-author: "Joschka Schwarz"
+title: "Acquisition"
+author: "Arpita Anand Prayag"
+Matriculation number: "564621"
+format: html
+editor: visual
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+# Acquisition Challenges
+
+Get some data via an API. There are millions of providers, that offer API access for free and have good documentation about how to query their service.
+
+## Running Code
+
+### Load libraries
+
+```{r}
+library(RSQLite)
+library(dplyr)
+library(httr)
+library(glue)
+library(jsonlite)
+library(keyring)
+library(rstudioapi)
+library(rvest)
+```
+
+### Send the GET request to the API
+
+```{r}
+response <- GET("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
+```
+
+### Check the status code
+
+```{r}
+if (response$status_code == 200) {
+  # The request was successful
+  # Get the response data
+
+  meals_db <- response %>%
+    .$content %>%
+    rawToChar() %>%
+    fromJSON()
+  
+  as.data.frame(meals_db)
+} else {
+  # The request failed
+  print(response$status_code)
+}
+```
+
+## Scrape one of the competitor websites of canyon
+
+### Set the URL of the website to scrape
+
+```{r}
+url <- "https://www.rosebikes.de/"
+```
+
+### Scrape the website
+
+```{r}
+html <- read_html(url)
+
+# Find the elements that contain the model names
+model_names <- html %>%
+  html_nodes(".products-slider-tile__product-name") %>%
+  html_text()
+
+# Find the elements that contain the prices
+prices <- html %>%
+  html_nodes(".product-tile-price__current-value") %>%
+  html_text()
+
+# Extract the number using regular expressions
+price <- gsub("[^0-9.,]", "", prices)  # Remove all non-digit, non-decimal, and non-comma characters
+
+```
+
+### Create a data frame of the model names and prices
+
+```{r}
+database <- data.frame(
+  Model = model_names,
+  Price = price
+)
+
+database
+```
