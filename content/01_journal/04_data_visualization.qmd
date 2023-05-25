@@ -1,6 +1,9 @@
 ---
 title: "Data Visualization"
 author: "Arpita Anand Prayag"
+Matriculation number: "564621"
+format: html
+editor: visual
 ---
 
 # Data Visualising Challenge
