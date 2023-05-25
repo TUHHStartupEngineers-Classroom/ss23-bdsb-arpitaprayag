@@ -1,17 +1,18 @@
 ---
 title: "Tidyverse"
 author: "Arpita Anand Prayag"
+Matriculation number: "564621"
 format: html
 editor: visual
 ---
 
-## Tidyverse Challenge
+# Tidyverse Challenge
 
 Analyze the sales by location (state) with a bar plot. Since state and city are multiple features (variables), they should be split. Which state has the highes revenue? Replace your bike_orderlines_wrangled_tbl object with the newly wrangled object (with the columns state and city).
 
 ## Running Code
 
-### 2.0 Load libraries
+### Load libraries
 
 ```{r}
 library(tidyverse)
@@ -21,7 +22,7 @@ library(lubridate)
 library(writexl)
 ```
 
-### 2.1 Importing Files
+### Importing Files
 
 ```{r}
 bikes_tbl <- read_excel(path ="C:/Users/arpit/OneDrive/Documents/GitHub/repo/ss23-bdsb-arpitaprayag/assets/data/ds_data/ds_data/01_bike_sales/01_raw_data/bikes.xlsx")
@@ -30,7 +31,7 @@ bikeshops_tbl  <- read_excel("C:/Users/arpit/OneDrive/Documents/GitHub/repo/ss23
 
 ```
 
-### 2.2 Examining Data
+### Examining Data
 
 ```{r}
 # Print it to the console
@@ -38,7 +39,7 @@ orderlines_tbl
 
 ```
 
-### 2.3 Joining Data
+### Joining Data
 
 ```{r}
 left_join(orderlines_tbl, bikes_tbl, by = c("product.id" = "bike.id"))
@@ -50,7 +51,7 @@ bike_orderlines_joined_tbl <- orderlines_tbl %>%
 bike_orderlines_joined_tbl
 ```
 
-### 2.4 Wrangling Data
+### Wrangling Data
 
 ```{r}
 bike_states_wrangled_tbl <- bike_orderlines_joined_tbl %>%
